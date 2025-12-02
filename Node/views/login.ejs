@@ -1,0 +1,51 @@
+<%- include('parts/html-head') %> <%- include('parts/html-navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">登入</h5>
+                            <form name="loginForm" novalidate onsubmit="sendData(event)">
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">帳號 (電郵)</label>
+                                    <input type="email" class="form-control" id="email" name="email" required />
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">密碼</label>
+                                    <input type="password" class="form-control" id="password" name="password" />
+                                </div>
+                                <button type="submit" class="btn btn-primary">登入</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include('parts/html-scripts') %>
+            <script>
+                const sendData = (e) => {
+                    e.preventDefault();
+
+                    const fd = new FormData(document.loginForm);
+
+                    fetch(`/login`, {
+                        method: "POST",
+                        body: fd,
+                    })
+                        .then((r) => r.json())
+                        .then((result) => {
+                            console.log(result);
+                            if (result.success) {
+                                const usp = new URLSearchParams(location.search);
+                                if (usp.get("bt")) {
+                                    location.href = usp.get("bt");
+                                } else {
+                                    location.href = "/";
+                                }
+                            } else {
+                                alert("帳號或密碼錯誤!");
+                            }
+                        });
+                };
+            </script>
+            <%- include('parts/html-footer') %>

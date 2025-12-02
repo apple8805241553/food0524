@@ -1,0 +1,59 @@
+@use '_variables' as *;
+
+// 重置所有樣式： all: unset;
+
+// 按鈕樣式
+
+// 👇Footer 那邊的社群軟體icon有使用
+@mixin button-icon {
+  color: #fff;
+  background: $color-accent;
+  border: none;
+  border-radius: 9rem;
+  font-size: $font-size-icon;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  width: 55px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-special;
+  }
+}
+
+// 👇食譜評論卡片左右按鈕那邊
+@mixin button-arrow {
+  font-size: $font-size-icon;
+  padding: 10px;
+  color: #fff;
+  background: $color-accent;
+  border: none;
+  border-radius: 9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 55px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-special;
+  }
+}
+
+// 👇文字圓角按鈕 (Footer的常見問題按鈕)
+@mixin button-text {
+  background-color: $color-background;
+  color: $color-primary;
+  border-radius: 9rem;
+  margin: auto 0;
+  padding: 8px 20px;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: $color-accent;
+    color: $color-background;
+  }
+}

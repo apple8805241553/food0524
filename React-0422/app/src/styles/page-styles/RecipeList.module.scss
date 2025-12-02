@@ -1,0 +1,164 @@
+@use '../variables' as *;
+@use '../mixins.scss' as *;
+
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .content {
+    margin: 50px auto;
+    width: 100%;
+    max-width: 1280px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .content {
+    max-width: 100%;
+    // padding: 0 10px;
+  }
+}
+
+.breadContainer {
+  width: 100%;
+  max-width: 1280px;
+  // margin: 50px auto 0px auto;
+  @media (max-width: 991px) {
+    padding: 0 20px;
+  }
+}
+
+/* Recipe Cards Section */
+.recipeSection {
+  margin-bottom: 0px;
+  .recipeGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }
+  @media (max-width: 991px) {
+    .recipeGrid {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 0 15px;
+    }
+  }
+}
+
+/* Pagination */
+.paginationSection {
+  display: flex;
+  font-size: 20px;
+  color: #faf8f9;
+  justify-content: center;
+  margin: 50px;
+}
+
+@media (max-width: 991px) {
+  .paginationSection {
+    max-width: 100%;
+    white-space: initial;
+  }
+}
+
+.pagination {
+  display: flex;
+  gap: 25px;
+  h2 {
+    display: flex;
+    align-items: center;
+    z-index: 5;
+    color: $color-accent;
+  }
+  h2:nth-of-type(2) {
+    transform: scale(-1);
+  }
+  @media (max-width: 991px) {
+    .pagination {
+      max-width: 100%;
+      white-space: initial;
+    }
+  }
+}
+
+.paginationButton {
+  border-radius: 100px;
+  background-color: #eeb392;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationButtonActive {
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.05);
+  background-color: $color-bright;
+  color: #fff;
+}
+
+/* Featured Section */
+.featuredSection {
+  width: 100%;
+  padding: 50px 0 70px 0;
+  text-align: center;
+  background-color: $color-accent;
+  div {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1280px;
+
+    h2 {
+      color: $color-background;
+      font-size: 32px;
+      padding: 0 0 30px 0;
+    }
+  }
+}
+
+.featuredGrid {
+  display: flex;
+  gap: 15px;
+  color: $color-primary;
+}
+.featuredCard {
+  border-radius: 30px;
+  background-color: #fff;
+  width: 100%;
+  overflow: hidden;
+  .featuredCardImage {
+    background-color: $color-background-error;
+    height: 200px;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  .featuredTitle {
+    padding: 20px 0;
+    color: $color-primary;
+    font-size: $font-size-h3;
+    align-self: stretch;
+  }
+}
+
+// 手機橫向滑動樣式
+@media (max-width: 1150px) {
+  .featuredSection .featuredGrid {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 20px 30px 20px;
+  }
+  .featuredSection .featuredCard {
+    flex: 0 0 45vw;
+    min-width: 45vw;
+    max-width: 50vw;
+    width: auto;
+  }
+}

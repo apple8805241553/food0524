@@ -1,0 +1,9 @@
+CREATE TABLE user_feedbacks (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    img VARCHAR(255),
+    user_name VARCHAR(100),
+    recipes_id INT,
+    is_like TINYINT(1) COMMENT '1代表讚，0代表倒讚',
+    context TEXT COMMENT '使用者輸入的表單內容',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);

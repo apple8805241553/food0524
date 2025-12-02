@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <title>Document</title>
+</head>
+
+<body>
+    <form name="form1">
+        <input type="file" name="photos" accept="image/*" multiple />
+    </form>
+    <div class="container" style="display: flex;"></div>
+
+    <script>
+        const photosField = document.form1.photos;
+        const cont = document.querySelector(".container");
+
+        const cardFn = (filename) => {
+            return `
+          <div class="card" style="width: 18rem;">
+            <img src="/img/${filename}" class="card-img-top" alt="...">
+            <div class="card-body">
+              <!--
+              <h5 class="card-title">Card title</h5>
+              -->
+            </div>
+          </div>
+        `;
+        };
+
+        photosField.addEventListener("change", async (e) => {
+            // 沒有選擇任何檔案, 就直接返回
+            if (!photosField.files.length) return;
+
+            const fd = new FormData(document.form1);
+            const r = await fetch(`/try-uploads`, {
+                method: "POST",
+                body: fd,
+            });
+            if (!r.ok) {
+                console.warn(`上傳發生錯誤`);
+                return;
+            }
+            const ar = await r.json();
+            console.log(ar);
+
+            cont.innerHTML = ar
+                .map((file) => {
+                    return cardFn(file.filename);
+                })
+                .join("");
+        });
+    </script>
+</body>
+
+</html>

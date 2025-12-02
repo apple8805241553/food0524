@@ -1,0 +1,153 @@
+<%- include('../parts/html-head') %>
+    <style>
+        .hearts {
+            display: inline-block;
+            color: darkred;
+        }
+
+        .hearts>.fa-solid {
+            display: none;
+        }
+
+        .hearts>.fa-regular {
+            display: inline-block;
+        }
+
+        .hearts.liked>.fa-solid {
+            display: inline-block;
+        }
+
+        .hearts.liked>.fa-regular {
+            display: none;
+        }
+    </style>
+    <%- include('../parts/html-navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col-6"></div>
+                <div class="col-6">
+                    <form class="d-flex" role="search">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                            name="keyword" value="<%= query.keyword ? query.keyword : '' %>" />
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <% for(let i=page-5; i<=page+5; i++) if(i>=1 && i<=totalPages) { const q={...query};
+                                    q.page=i; %>
+                                    <li class="page-item <%= page==i ? 'active' : '' %>">
+                                        <a class="page-link" href="?<%= new URLSearchParams(q) %>">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-borderes table-striped">
+                        <thead>
+                            <tr>
+                                <th><i class="fa-solid fa-trash"></i></th>
+                                <th>編號</th>
+                                <th>姓名</th>
+                                <th>頭貼</th>
+                                <th>電郵</th>
+                                <th>手機</th>
+                                <th>生日</th>
+                                <th>地址</th>
+                                <th><i class="fa-solid fa-heart"></i></th>
+                                <th><i class="fa-solid fa-file-pen"></i></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let r of rows){ let newName=r.name; let newMobile=r.mobile; if(query.keyword){
+                                newName=newName.split(query.keyword).join(`<b>${query.keyword}</b>`);
+                                newMobile =
+                                newMobile.split(query.keyword).join(`<b>${query.keyword}</b>`); } %>
+                                <tr>
+                                    <td>
+                                        <a href="#" onclick="deleteOne(event)"><i class="fa-solid fa-trash"></i></a>
+                                    </td>
+                                    <td class="ab_id">
+                                        <%= r.ab_id %>
+                                    </td>
+                                    <td class="name"><%- newName %></td>
+                                    <td>
+                                        <% if(r.avatar){ %>
+                                            <img src="/img/<%= r.avatar %>" alt="" width="120px" />
+                                            <% } %>
+                                    </td>
+                                    <td>
+                                        <%= r.email %>
+                                    </td>
+                                    <td><%- newMobile %></td>
+                                    <td>
+                                        <%= r.birthday %>
+                                    </td>
+                                    <td>
+                                        <%= r.address %>
+                                    </td>
+                                    <td>
+                                        <div class="hearts <%= r.like_id ? 'liked' : '' %>"
+                                            onclick="heartsClick(event)">
+                                            <i class="fa-solid fa-heart"></i>
+                                            <i class="fa-regular fa-heart"></i>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="/address-book/edit/<%= r.ab_id %>"><i
+                                                class="fa-solid fa-file-pen"></i></a>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <%- include('../parts/html-scripts') %>
+            <script>
+                const deleteOne = async (e) => {
+                    e.preventDefault();
+                    const tr = e.target.closest("tr");
+                    const ab_id = tr.querySelector(".ab_id").innerHTML;
+                    const name = tr.querySelector(".name").innerHTML;
+                    if (confirm(`確定要刪除編號為 ${ab_id} 姓名為 ${name} 的資料嗎?`)) {
+                        const r = await fetch(`/address-book/api/${ab_id}`, {
+                            method: "DELETE",
+                        });
+                        const result = await r.json();
+                        if (result.success) {
+                            location.reload(); // 頁面重新載入
+                        }
+                    }
+                };
+                const heartsClick = (e) => {
+                    const t = e.currentTarget;
+                    const ab_id_td = t.closest("tr").querySelector(".ab_id");
+                    const ab_id = +ab_id_td.innerText;
+                    if (!ab_id) return;
+
+                    fetch(`/address-book/toggle-like/${ab_id}`, {
+                        method: "POST",
+                    })
+                        .then((r) => r.json())
+                        .then((result) => {
+                            if (result.success) {
+                                if (result.action === "add") {
+                                    t.classList.add("liked");
+                                } else {
+                                    t.classList.remove("liked");
+                                }
+                            }
+                        });
+                };
+            </script>
+            <%- include('../parts/html-footer') %>

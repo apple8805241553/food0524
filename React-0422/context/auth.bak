@@ -1,0 +1,11 @@
+// context套用第1步: 建立context
+import { createContext } from 'react'
+
+// createContext的傳入參數是 defaultValue，是在套用context失敗或有錯誤發生時會得到的預設值(也有備援值的概念)，可以用有意義的值或是null(通常是針對物件或是除錯用)
+const AuthContext = createContext(null)
+// 設定displayName屬性(呈現名稱)
+// 可選的屬性，用於搭配react devtools(瀏覽器擴充)使用，方便除錯。不給定的話都是統一使用"Context"名稱
+AuthContext.displayName = 'AuthContext'
+
+// 導出(命名導出 named export)
+export { AuthContext }

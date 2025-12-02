@@ -1,0 +1,88 @@
+// main.scss 全域樣式，已放在app/layout.js裡
+
+@use './variables' as *;
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+main {
+  margin-top: 60px;
+}
+
+body {
+  background-color: $color-background;
+  color: $color-primary;
+  font-family: $font-family-default;
+}
+
+hr {
+  margin: 0;
+  color: $color-accent;
+}
+h1,
+h2,
+h3 {
+  margin-bottom: $margin-bottom-title;
+  font-weight: $font-weight-title;
+  letter-spacing: $letter-spacing;
+}
+
+h1 {
+  font-size: $font-size-h1;
+}
+h2 {
+  font-size: $font-size-h2;
+}
+h3 {
+  font-size: $font-size-h3;
+}
+
+p {
+  font-size: $font-size-p;
+  margin-bottom: $margin-bottom-p;
+  letter-spacing: $letter-spacing;
+}
+
+a {
+  letter-spacing: $letter-spacing;
+  text-decoration: none;
+  color: inherit; // 保持與周圍文字一致
+  transition: all 0.3s;
+  &:hover {
+    transform: scale(1.02);
+  }
+  &:active {
+    transform: scale(0.98);
+  }
+}
+button {
+  border: none !important;
+  background: none;
+  transition: all 0.3s;
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+// 確保 Modal 開啟時頁面不會偏移
+.modal-open {
+  overflow: auto !important;
+  padding-right: 0 !important;
+}
+
+/* Sweetalert2 自訂樣式 */
+.swal-custom-popup {
+  font-family: 'Noto Sans TC', sans-serif !important;
+}
+
+.swal-custom-container {
+  z-index: 9999;
+}
+
+/* 讓 body 在彈窗時不要移動 */
+body.swal2-shown {
+  padding-right: 0 !important;
+}

@@ -1,0 +1,59 @@
+<%- include('../parts/html-head') %> <%- include('../parts/html-navbar') %>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination">
+                            <% for(let i=page-5; i<=page+5; i++) if(i>=1 && i<=totalPages) { %>
+                                    <li class="page-item <%= page==i ? 'active' : '' %>">
+                                        <a class="page-link" href="?page=<%= i %>">
+                                            <%= i %>
+                                        </a>
+                                    </li>
+                                    <% } %>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <table class="table table-borderes table-striped">
+                        <thead>
+                            <tr>
+                                <th>編號</th>
+                                <th>姓名</th>
+                                <th>電郵</th>
+                                <th>手機</th>
+                                <th>生日</th>
+                                <th>地址</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let r of rows){ %>
+                                <tr>
+                                    <td class="ab_id">
+                                        <%= r.ab_id %>
+                                    </td>
+                                    <td class="name">
+                                        <%= r.name %>
+                                    </td>
+                                    <td>
+                                        <%= r.email %>
+                                    </td>
+                                    <td>
+                                        <%= r.mobile %>
+                                    </td>
+                                    <td>
+                                        <%= r.birthday %>
+                                    </td>
+                                    <td>
+                                        <%= r.address %>
+                                    </td>
+                                </tr>
+                                <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <%- include('../parts/html-scripts') %> <%- include('../parts/html-footer') %>

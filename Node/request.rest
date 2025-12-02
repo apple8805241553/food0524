@@ -1,0 +1,16 @@
+GET http://localhost:3001/try-qs?name=shin&age=30
+
+###  分隔線
+GET http://localhost:3001/
+
+###
+POST http://localhost:3001/try-post
+Content-Type: application/x-www-form-urlencoded
+
+name=shin&age=22
+
+###
+POST http://localhost:3001/try-post
+Content-Type: application/application/json
+
+{"name":"shin","age":"22"}

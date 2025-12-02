@@ -1,0 +1,227 @@
+@use '../variables' as *;
+@use '../mixins.scss' as *;
+
+/* wrapper*/
+.paymentPageWrapper {
+  padding: 20px 0;
+}
+
+/* 付款表單（淺灰色框） */
+.paymentFormContainer {
+  max-width: 500px;
+  margin: 0 auto; /*頁面左右置中*/
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 30px;
+  box-shadow: $card-shadow;
+}
+
+// 信用卡背景
+.creditCardSection {
+padding: 20px 0;
+  text-align: center;
+  background-color: #f1592215; /* 一個淡淡的背景色 */
+  border-radius: 8px;
+  /* margin-top: 20px; */
+}
+
+
+/* creditCardSection <p> */
+.creditCardSection p {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 16px;
+}
+
+/* h2 */
+.formHeaderTitle {
+  text-align: center;
+  color: #333;
+  margin-bottom: 25px;
+}
+
+
+/* 付款方式按鈕 */
+.paymentMethodSelector {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px; /* 與表單欄位隔開 */
+  gap: 15; /* 按鈕間距 */
+}
+
+.methodButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* icon 和文字的間距 */
+  padding: 10px 15px;
+  border: 1px solid #ccc; /* 邊框 */
+  border-radius: 6px; /* 圓角 */
+  background-color: #fff; /* 背景色 */
+  color: #555; /* 文字顏色 */
+  box-shadow: 0 2px 4px rgba(136, 24, 24, 0.05); /* 陰影 */
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  /* icon set */
+  display: flex; /* 讓 icon 和文字好對齊 */
+  align-items: center;
+  justify-content: center;
+  gap: 8px; /* icon 和文字的間距 */
+  padding: 12px 15px;
+}
+
+/* card icon */
+.paymentIcon {
+  width: 20px; /* icon 寬度 */
+  height: 20px; /* icon 高度 */
+  vertical-align: middle;
+  /* color: currentColor; */ /* 讓 react-icons 的顏色跟按鈕文字顏色一樣，可以視情況取消註解 */
+  /* fill: currentColor; */ /* 如果是 SVG，這可以讓 SVG 內部顏色繼承文字顏色 */
+}
+
+/* line png */
+.linePayIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.methodBbutton:last-child {
+  /*border-right: none;*/ /* 最後一個按鈕不要右邊框 (有flex:1 會處理好)*/
+}
+
+.methodButton.active {
+  font-size: $font-size-h3;
+  background-color: #e8ebed; /* 選中時的背景色 */
+  color: $color-accent; /* 選中時的文字顏色 */
+  font-weight: bold;
+  box-shadow: inset 0 0 5px rgba(0, 123, 255, 0.1); /* 選中時加一點內陰影 */
+}
+
+.methodButton:hover:not(.active) {
+  background-color: #f0f0f0; /* 滑鼠移到未選中的按鈕上 */
+}
+
+.icon {
+  /* icon */
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+/* END 付款方式選擇按鈕 */
+
+/* --- 信用卡表單 spezifische Styles --- */
+.creditCardSection h3,
+.linePaySection h3 {
+  /* 給各區塊一個小標題 */
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.3em;
+  border-bottom: 1px solid #b5afaf33;
+  padding-bottom: 10px;
+}
+
+.expiryDate {
+  flex: 1;
+}
+
+/* payment按鍵 */
+.submitButton {
+  width: 60%;
+  padding: 10px 10px;
+  background-color: #e06c14;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: $font-size-h2;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* 跟上面元素有點距離 */
+}
+
+/* payment按鍵動到特效 */
+.submitButton:hover {
+  background-color: $color-primary;
+  transform: translateY(-1px);
+}
+
+/* 按下按鈕時的效果 */
+.submitButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- LINE Pay 區塊樣式 --- */
+.linePaySection {
+  padding: 20px 0;
+  text-align: center;
+  background-color: #f0fff0; /* 給 LINE Pay 區塊一個淡淡的綠色背景 */
+  border-radius: 8px;
+  /* margin-top: 20px; */
+}
+
+/* linePaySection <p> */
+.linePaySection p {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 16px;
+}
+
+.linePayButton {
+  background-color: #00c300; /* LINE 的代表色 */
+}
+
+.linePayButton:hover {
+  background-color: #00a000;
+}
+
+.linePayNote {
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 15px;
+}
+/* END LINE Pay */
+
+.sticker1 {
+  z-index: -1;
+  width: 500px;
+  position: absolute;
+  left: 7%;
+  top: 215px;
+  /* transform: rotate(250deg); */
+}
+
+.sticker2 {
+  z-index: -1;
+  width: 300px;
+  position: absolute;
+  right: 15%;
+  top: 200px;
+  /* transform: rotate(250deg); */
+}
+
+@media (max-width: 991px) {
+  .paymentFormContainer {
+    margin: 0 20px;
+  }
+  .sticker1,
+  .sticker2 {
+    display: none;
+  }
+
+  .paymentPageWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+  }
+}

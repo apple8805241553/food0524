@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css" />
+    <title>form - application/json</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <form method="post" onsubmit="sendData(event)">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="text" class="form-control" id="email" name="email" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" />
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+            <pre id="info"></pre>
+        </div>
+    </div>
+    <script>
+        const sendData = async (e) => {
+            e.preventDefault();
+
+            const fd = new FormData(document.forms[0]);
+            const dataObj = {};
+
+            for (let [k, v] of fd.entries()) {
+                dataObj[k] = v;
+            }
+
+            const r = await fetch(`/try-post`, {
+                method: "POST",
+                body: JSON.stringify(dataObj),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+            const result = await r.json();
+            info.innerHTML = JSON.stringify(result, null, 4);
+        };
+    </script>
+</body>
+
+</html>

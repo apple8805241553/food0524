@@ -1,0 +1,30 @@
+// 樣式表勿刪，如有需要改動樣式可修改這份樣式表(全域一起調整)
+
+// 標準色
+$color-primary: #423c3a;
+$color-primaryHover: #966d5e;
+$color-accent: #df6c2d;
+$color-bright: #ff5a00;
+$color-special: #a30802;
+$color-hover: #c55a24;
+$color-light: #f3cab3;
+$color-content: #7a7a7a;
+$color-background: #fffaf0;
+$color-background-error: #e7e7e7;
+
+// 文字
+$font-family-default: 'Noto Sans TC', sans-serif;
+$font-size-icon: 2rem;
+$font-size-h1: 48px;
+$font-weight-title: 700;
+$font-size-h2: 24px;
+$font-size-h3: 16px;
+$font-size-p: 14px;
+$font-size-p1: 16px;
+$margin-bottom-p: 0px;
+$margin-bottom-title: 0px;
+$letter-spacing: 0.48px;
+
+// 陰影
+$title-shadow: 0px 3px 10px rgba(0, 0, 0, 0.5);
+$card-shadow: 0px 3px 8px 0px rgba(0, 0, 0, 0.1);

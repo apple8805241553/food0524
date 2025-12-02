@@ -1,0 +1,133 @@
+.listContainer {
+  display: flex;
+  padding: 60px 10px;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  white-space: nowrap;
+  text-align: center;
+  justify-content: center;
+}
+
+.titleContainer {
+  width: 144px;
+  max-width: 100%;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 36px;
+  color: #000;
+  font-weight: 700;
+}
+
+.qaRow {
+  align-self: stretch;
+  display: flex;
+  margin-top: 60px;
+  min-height: 464px;
+  width: 100%;
+  align-items: center;
+  gap: 40px 47px;
+  font-weight: 400;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.qaItem {
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 12px 0;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+.iconFrame {
+  border-radius: 50px;
+  background-color: rgba(0, 0, 0, 0.05);
+  align-self: center;
+  width: 100px;
+  height: 100px;
+  padding: 0 19px;
+  font-family:
+    Roboto,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 63px;
+  color: rgba(0, 0, 0, 1);
+  line-height: 1.6;
+}
+
+.contentBox {
+  margin-top: 20px;
+  width: 100%;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  color: #000;
+  letter-spacing: 0.6px;
+}
+
+.questionTitle {
+  font-weight: 400;
+}
+
+.answerText {
+  margin-top: 8px;
+}
+
+.spacer {
+  display: flex;
+  min-height: 100px;
+  margin-top: 60px;
+  width: 100px;
+  max-width: 100%;
+}
+
+@media (max-width: 991px) {
+  .listContainer {
+    white-space: initial;
+  }
+
+  .titleContainer {
+    white-space: initial;
+  }
+
+  .qaRow {
+    max-width: 100%;
+    margin-top: 40px;
+    white-space: initial;
+  }
+
+  .qaItem {
+    white-space: initial;
+  }
+
+  .iconFrame {
+    font-size: 40px;
+    white-space: initial;
+  }
+
+  .contentBox {
+    white-space: initial;
+  }
+
+  .spacer {
+    margin-top: 40px;
+  }
+}

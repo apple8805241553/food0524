@@ -1,0 +1,82 @@
+@use './variables' as *;
+
+.recipeCard {
+  border-radius: 30px;
+  box-shadow: $card-shadow;
+  background-color: #fff;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 1;
+  // height: 320px;
+  // width: calc((100% - 10%) / 3);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease; // 添加平滑過渡效果
+
+  &:hover {
+    transform: scale(1.02); // 放大卡片
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); // 增加陰影
+  }
+  div {
+    height: 215px;
+    background-color: $color-background-error;
+    overflow: hidden;
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 215px;
+    }
+  }
+  span {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    z-index: 0;
+    width: 100%;
+    padding: 25px 40px;
+    text-align: center;
+    @media (max-width: 991px) {
+      padding: 25px 20px;
+    }
+    h3 {
+      color: $color-primary;
+      margin-bottom: 5px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    p {
+      color: $color-content;
+      letter-spacing: 0.48px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .wishlistButton {
+    color: #ffffff;
+    background: $color-accent;
+    border-radius: 9rem;
+    font-size: $font-size-icon;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 13px;
+    top: 14px;
+    height: 55px;
+    width: 55px;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: $color-hover;
+    }
+    &:active {
+      transform: scale(0.5); // ✅ 點擊時縮小一點
+    }
+    &.active {
+      background-color: $color-background; // ✅ 收藏後的底色
+      color: $color-accent; // 可選：改變文字或 icon 顏色
+    }
+  }
+}

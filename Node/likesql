@@ -1,0 +1,28 @@
+
+-- 第一頁列表
+
+SELECT * FROM `address_book` LIMIT 0, 20;
+
+SELECT * FROM `address_book` ab
+JOIN `ab_likes` li ON ab.ab_id=li.ab_id
+WHERE li.member_id=7
+LIMIT 0, 20;
+
+SELECT * FROM `address_book` ab
+LEFT JOIN `ab_likes` li ON ab.ab_id=li.ab_id
+WHERE li.member_id=7
+LIMIT 0, 20;
+
+SELECT ab.*, li.like_id FROM `address_book` ab
+LEFT JOIN (
+  SELECT * FROM `ab_likes` WHERE member_id=7
+) li ON ab.ab_id=li.ab_id
+ORDER BY ab.ab_id DESC
+LIMIT 0, 25;
+
+SELECT ab.*, li.like_id FROM `address_book` ab
+LEFT JOIN (
+  SELECT * FROM `ab_likes` WHERE member_id=0
+) li ON ab.ab_id=li.ab_id
+ORDER BY ab.ab_id DESC
+LIMIT 0, 25;

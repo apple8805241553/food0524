@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        <select id="lv01" onchange="genLv02()"></select>
+        <select id="lv02"></select>
+    </form>
+    <script>
+        let cateAr = [];
+
+        // 建立第一層
+        const genLv01 = () => {
+            const first = cateAr.filter((v) => !v.parent_id);
+            console.log(first);
+            lv01.innerHTML = first.map((v) => {
+                return `<option value="${v.category_id}">${v.name}</option>`;
+
+            }).join("");
+
+        };
+        // 第二層
+        const genLv02 = () => {
+
+            const lv01_val = lv01.value;
+
+            lv02.innerHTML = cateAr.filter((v) => v.parent_id == lv01_val).map((v) => {
+                return `<option value="${v.category_id}">${v.name}</option>`;
+            }).join("");
+
+        };
+
+        fetch(`http://${location.hostname}:3001/cate1`)
+            .then((r) => r.json())
+            .then((result) => {
+                cateAr = result;
+                genLv01();
+                genLv02();
+            });
+    </script>
+</body>
+
+</html>

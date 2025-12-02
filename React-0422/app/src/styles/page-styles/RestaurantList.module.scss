@@ -1,0 +1,329 @@
+@use '../variables' as *;
+@use '../mixins.scss' as *;
+
+.pageContainer {
+  align-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 991px) {
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+  }
+}
+
+.heroSection {
+  margin: 50px 0;
+  display: flex;
+  width: 100%;
+  max-width: 1280px;
+  // overflow: hidden;
+  justify-content: center;
+  @media (max-width: 991px) {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.heroContentWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  gap: 30px;
+}
+
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  p {
+    font-size: $font-size-p1;
+  }
+}
+
+.searchBar {
+  display: flex;
+  width: 70%;
+  padding: 10px 15px;
+  border-radius: 30px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  input {
+    width: 100%;
+    padding: 10px 15px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+  }
+  button {
+    width: 20%;
+    padding: 10px 20px;
+    background-color: $color-accent;
+    color: #fff;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+.noResults {
+  width: 100%;
+  text-align: center;
+  color: $color-primary;
+  font-size: $font-size-p1;
+}
+
+.heroImageContainer {
+  height: 400px;
+  overflow: hidden;
+  border-radius: 30px;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.decorativeImage {
+  object-fit: contain;
+  object-position: center;
+  width: 1280px;
+  align-self: start;
+  position: absolute;
+  z-index: 0;
+  min-width: 240px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  height: 0px;
+}
+
+@media (max-width: 991px) {
+  .decorativeImage {
+    max-width: 100%;
+  }
+}
+
+.restaurantListSection {
+  display: flex;
+  flex-direction: column;
+  h1 {
+    text-align: center;
+  }
+}
+
+.restaurantList {
+  display: flex;
+  margin: 30px auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.restaurantCard {
+  background-color: rgba(236, 236, 236, 1);
+  display: flex;
+  height: 360px; /* 固定高度 */
+  width: 100%;
+  max-width: 1280px; /* 最大寬度 */
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.restaurantCard:not(:first-child) {
+  margin-top: 40px;
+}
+
+.restaurantImage {
+  aspect-ratio: 1.29;
+  object-fit: cover; /* 改為 cover 確保圖片填滿容器 */
+  height: 100%; /* 設定高度為 100% */
+  width: 40%; /* 固定寬度比例 */
+  min-width: 240px;
+  flex: none; /* 防止 flex 影響大小 */
+}
+@media (max-width: 991px) {
+  .restaurantList {
+    max-width: 100%;
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .restaurantCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .restaurantImage {
+    width: 100%;
+    height: 50%;
+  }
+}
+.cardContent {
+  display: flex;
+  width: 60%; /* 固定寬度比例 */
+  padding: 40px;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  flex: none; /* 防止 flex 影響大小 */
+  overflow: hidden;
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+@media (max-width: 991px) {
+  .cardContent {
+    width: 100%;
+    padding: 20px 20px;
+    white-space: initial;
+  }
+}
+
+.cardBadge {
+  text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.25);
+  width: 60px;
+  font-size: 24px;
+  color: #fff;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .cardBadge {
+    white-space: initial;
+    word-wrap: normal;
+  }
+}
+
+.cardTextContainer {
+  margin-top: 20px;
+  width: 100%;
+}
+
+
+
+.cardTitle {
+  color: #423c3a;
+  /* leading-trim: both;
+  text-edge: cap; */
+  word-wrap: break-word; /* 修改為 break-word */
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 15px; /* 添加底部間距 */
+  line-height: 1.2; /* 控制行高 */
+  /* 移除這些可能導致標題隱藏的屬性 */
+  /* overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  /* 添加這些屬性 */
+  display: block;
+  white-space: normal;
+  max-width: 100%;
+}
+
+.cardDescription {
+  color: #7a7a7a;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+  margin-top: 25px;
+  word-wrap: break-word;
+  width: auto;
+  align-self: stretch;
+  /* 添加以下屬性 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 4; /* 最多顯示三行 */
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  line-height: 1.5; /* 控制行高 */
+  max-height: 120px; /* 控制最大高度 */
+}
+
+.pagination {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 30px;
+}
+
+.paginationArrow {
+  aspect-ratio: 1; /* 改為 1，確保是正方形 */
+  object-fit: contain;
+  object-position: center;
+  width: 80px;
+  height: 80px; /* 添加固定高度 */
+  stroke-width: 5px;
+  stroke: #df6c2d;
+  align-self: stretch;
+  margin: auto 0;
+  flex-shrink: 0;
+  border-radius: 50%; /* 使用 50% 製造圓形效果 */
+  padding: 12px; /* 添加內邊距讓圖示不會太貼近邊緣 */
+  cursor: pointer; /* 添加指標樣式 */
+  transition: background-color 0.3s ease; /* 添加過渡效果 */
+}
+
+.pageNumberContainer {
+  align-self: stretch;
+  display: flex;
+  margin: auto 0;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  width: 50px;
+}
+
+@media (max-width: 991px) {
+  .pageNumberContainer {
+    white-space: initial;
+  }
+}
+
+.pageNumber {
+  color: #faf8f9;
+  leading-trim: both;
+  text-edge: cap;
+  border-radius: 100px;
+  align-self: stretch;
+  margin: auto 0;
+  width: 50px;
+  padding: 0 5px;
+  overflow: hidden;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeb392;
+}
+
+.pageNumberActive {
+  background-color: #ff5a00;
+  color: #fff;
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.05);
+}
+
+@media (max-width: 991px) {
+  .pageNumber {
+    white-space: initial;
+  }
+}
+@media (max-width: 991px) {
+  .cardTextContainer,
+  .cardTitle,
+  .cardDescription {
+    // white-space: initial;
+    margin-top: 0px;
+  }
+}

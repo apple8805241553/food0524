@@ -1,0 +1,33 @@
+購物車API
+
+1.購物車資料表設計
+    p key , 會員ID(辨識是哪個帳號的購物車) ,商品ID ,數量, 加入購物車的時間 
+
+2.需要有哪一需API
+
+    購物車內容[列表]
+        GET /cart      取得購物車的內容
+    產品加入購物車 (產品ID,數量)
+        POST /cart     項目加入購物車
+
+    產品項目 數量+1 (產品ID)
+    POST /cart/increase
+    數量-1 (產品ID)
+    POST /cart/decrease
+    直接設定產品數量
+    POST /cart (產品ID,數量)
+
+    累加項目的數量 (產品ID,數量)
+    狀態: {product_id:3 , quantity:2}
+    POST /cart/add?product_id=3&quantity=2
+    狀態: {product_id:3 , quantity:3}
+
+    刪除項目( 產品ID)
+        DELETE /cart   刪除購物車內容
+
+    清空購物車
+        DELETE /cart/clear  清空購物車的內容
+
+
+    訂單成立時  
+        SQL transaction

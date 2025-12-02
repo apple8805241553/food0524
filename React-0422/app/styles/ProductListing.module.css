@@ -1,0 +1,730 @@
+.container {
+  display: flex;
+  padding-top: 9px;
+  padding-bottom: 100px;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.productInterface {
+  position: relative;
+  margin-top: 9px;
+  width: 100%;
+}
+
+@media (max-width: 991px) {
+  .productInterface {
+    max-width: 100%;
+  }
+}
+
+.topIcons {
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 0;
+  display: flex;
+  min-height: 82px;
+  width: 100%;
+  padding-left: 328px;
+  padding-right: 328px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  align-items: center;
+  gap: 35px;
+  overflow: hidden;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .topIcons {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.iconImage {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 58px;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+}
+
+.productGrid {
+  align-items: center;
+  background-color: #fffaf0;
+  z-index: 0;
+  display: flex;
+  width: 100%;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-top: 38px;
+  padding-bottom: 38px;
+  gap: 10px;
+  overflow: hidden;
+  justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
+  .productGrid {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.foodCategoryBlock {
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 100%;
+  align-items: flex-start;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
+  .foodCategoryBlock {
+    max-width: 100%;
+  }
+}
+
+.foodCard {
+  border-radius: 30px;
+  box-shadow: 2px 3px 8px 0px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  position: relative;
+  min-width: 240px;
+  overflow: hidden;
+  flex-grow: 1;
+  flex-shrink: 1;
+  width: 320px;
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 0;
+  aspect-ratio: 1.81;
+  width: 100%;
+}
+
+.backgroundImage {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.foodImage {
+  aspect-ratio: 1.81;
+  object-fit: contain;
+  object-position: center;
+  width: 100%;
+}
+
+.cardContent {
+  justify-content: center;
+  align-items: stretch;
+  z-index: 0;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  text-align: center;
+  padding: 25px 40px;
+}
+
+@media (max-width: 991px) {
+  .cardContent {
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: initial;
+  }
+}
+
+.foodTitle {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #423c3a;
+  text-overflow: ellipsis;
+  font-size: 20px;
+  font-weight: 700;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.foodDescription {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  color: #7a7a7a;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+  margin-top: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+}
+
+.favoriteIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 55px;
+  position: absolute;
+  z-index: 0;
+  right: 13px;
+  top: 14px;
+  height: 55px;
+}
+
+.paginationSection {
+  background-color: rgba(255, 255, 255, 1);
+  z-index: 0;
+  display: flex;
+  min-height: 173px;
+  width: 100%;
+  padding-top: 42px;
+  padding-bottom: 81px;
+  flex-direction: column;
+  align-items: center;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  color: #faf8f9;
+  font-weight: 700;
+  text-align: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .paginationSection {
+    max-width: 100%;
+  }
+}
+
+.pageNumbers {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  justify-content: flex-start;
+}
+
+@media (max-width: 991px) {
+  .pageNumbers {
+    max-width: 100%;
+  }
+}
+
+.arrowIcon {
+  aspect-ratio: 0.65;
+  object-fit: contain;
+  object-position: center;
+  width: 11px;
+  stroke-width: 5px;
+  stroke: #df6c2d;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+}
+
+.pageNumberContainer {
+  align-self: stretch;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  width: 50px;
+}
+
+@media (max-width: 991px) {
+  .pageNumberContainer {
+    white-space: initial;
+  }
+}
+
+.pageButton {
+  border-radius: 100px;
+  background-color: #eeb392;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50px;
+  padding: 0 5px;
+  overflow: hidden;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .pageButton {
+    white-space: initial;
+  }
+}
+
+.activePageButton {
+  border-radius: 100px;
+  box-shadow: 0px 0px 0px 10px rgba(0, 0, 0, 0.05);
+  background-color: #ff5a00;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 50px;
+  padding: 0 5px;
+  overflow: hidden;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+@media (max-width: 991px) {
+  .activePageButton {
+    white-space: initial;
+  }
+}
+
+.footer {
+  justify-content: space-between;
+  align-items: center;
+  background-color: #423c3a;
+  z-index: 0;
+  display: flex;
+  min-height: 400px;
+  width: 100%;
+  padding: 0 320px;
+}
+
+@media (max-width: 991px) {
+  .footer {
+    max-width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.footerContent {
+  max-width: 1280px;
+  justify-content: space-between;
+  align-items: stretch;
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  margin-top: auto;
+  margin-bottom: auto;
+  min-height: 348px;
+  width: 100%;
+  gap: 40px 100px;
+  overflow: hidden;
+  flex-wrap: wrap;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
+  .footerContent {
+    max-width: 100%;
+  }
+}
+
+.footerLeft {
+  display: flex;
+  min-width: 240px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  flex-direction: column;
+  align-items: stretch;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  justify-content: center;
+  width: 457px;
+}
+
+@media (max-width: 991px) {
+  .footerLeft {
+    max-width: 100%;
+  }
+}
+
+.footerThankYou {
+  color: #fff5ee;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+@media (max-width: 991px) {
+  .footerThankYou {
+    max-width: 100%;
+  }
+}
+
+.feedbackContainer {
+  margin-top: 20px;
+  min-height: 191px;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.48px;
+}
+
+@media (max-width: 991px) {
+  .feedbackContainer {
+    max-width: 100%;
+  }
+}
+
+.feedbackText {
+  color: #fff5ee;
+}
+
+@media (max-width: 991px) {
+  .feedbackText {
+    max-width: 100%;
+  }
+}
+
+.feedbackInput {
+  border-radius: 15px;
+  background-color: rgba(250, 248, 249, 0.45);
+  margin-top: 15px;
+  width: 100%;
+  padding: 10px 15px;
+  color: #faf8f9;
+  height: 100%;
+}
+
+@media (max-width: 991px) {
+  .feedbackInput {
+    max-width: 100%;
+  }
+}
+
+.footerRight {
+  display: flex;
+  min-width: 240px;
+  padding-top: 45px;
+  padding-bottom: 45px;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.faqButton {
+  align-self: stretch;
+  border-radius: 71.97px;
+  box-shadow: 0px 0px 0px 15px rgba(0, 0, 0, 0.05);
+  background-color: #df6c2d;
+  overflow: hidden;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 36px;
+  color: #faf8f9;
+  font-weight: 700;
+  text-align: center;
+  padding: 25px 60px;
+}
+
+@media (max-width: 991px) {
+  .faqButton {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.socialIcons {
+  display: flex;
+  margin-top: 40px;
+  align-items: flex-end;
+  gap: 12px;
+  justify-content: flex-start;
+}
+
+.socialIcon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 79px;
+  box-shadow: 2px 3px 8px 0px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.socialIconPlaceholder {
+  box-shadow: 2px 3px 8px 0px rgba(0, 0, 0, 0.25);
+  width: 79px;
+}
+
+.socialIconCircle {
+  background-color: #ececec;
+  border-radius: 50%;
+  display: flex;
+  width: 79px;
+  flex-shrink: 0;
+  height: 79px;
+  fill: #ececec;
+}
+
+.navbar {
+  position: absolute;
+  z-index: 0;
+  min-height: 88px;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+@media (max-width: 991px) {
+  .navbar {
+    max-width: 100%;
+  }
+}
+
+.navbarInner {
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 3px 8px 0px rgba(0, 0, 0, 0.25);
+  background-color: #fff;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@media (max-width: 991px) {
+  .navbarInner {
+    max-width: 100%;
+  }
+}
+
+.navContent {
+  display: flex;
+  min-height: 80px;
+  width: 100%;
+  max-width: 1280px;
+  align-items: stretch;
+  gap: 40px 200px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 991px) {
+  .navContent {
+    max-width: 100%;
+  }
+}
+
+.navLeftGroup {
+  display: flex;
+  min-width: 240px;
+  align-items: stretch;
+  gap: 40px;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  color: #423c3a;
+  font-weight: 700;
+  text-align: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
+  .navLeftGroup {
+    max-width: 100%;
+  }
+}
+
+.logoImage {
+  aspect-ratio: 0.67;
+  object-fit: contain;
+  object-position: center;
+  width: 38px;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+}
+
+.navBtnGroup {
+  display: flex;
+  min-width: 240px;
+  align-items: center;
+  gap: 18px;
+  justify-content: flex-start;
+  height: 100%;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
+  .navBtnGroup {
+    max-width: 100%;
+  }
+}
+
+.navBtn {
+  align-self: stretch;
+  border-radius: 100px;
+  background-color: rgba(223, 108, 45, 0);
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+@media (max-width: 991px) {
+  .navBtn {
+    white-space: initial;
+  }
+}
+
+.navRightGroup {
+  display: flex;
+  min-width: 240px;
+  align-items: center;
+  gap: 15px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  height: 100%;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 0%;
+}
+
+@media (max-width: 991px) {
+  .navRightGroup {
+    max-width: 100%;
+  }
+}
+
+.searchBar {
+  min-width: 200px;
+  max-width: 300px;
+  border-radius: 200px;
+  background-color: #faf8f9;
+  align-self: stretch;
+  display: flex;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 300px;
+  flex-shrink: 1;
+  height: 49px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  gap: 10px;
+  flex: 1;
+  flex-basis: 0%;
+}
+
+.cartIcon {
+  aspect-ratio: 1.07;
+  object-fit: contain;
+  object-position: center;
+  width: 45px;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+}
+
+.userIcon {
+  aspect-ratio: 1.18;
+  object-fit: contain;
+  object-position: center;
+  width: 33px;
+  fill: #df6c2d;
+  align-self: stretch;
+  margin-top: auto;
+  margin-bottom: auto;
+  flex-shrink: 0;
+}
+
+.categoryLabels {
+  align-self: flex-end;
+  z-index: 10;
+  display: flex;
+  margin-top: -2867px;
+  margin-right: 82px;
+  width: 460px;
+  max-width: 100%;
+  flex-direction: column;
+  font-family:
+    "Noto Sans TC",
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 16px;
+  color: #faf8f9;
+  font-weight: 700;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .categoryLabels {
+    margin-top: -200px;
+    margin-right: 10px;
+  }
+}
+
+.categoryLabel {
+  align-self: flex-start;
+}
+
+.menuLabel {
+  align-self: center;
+  z-index: 10;
+  margin-top: -12px;
+  margin-left: 16px;
+}
+
+.recommendLabel {
+  align-self: flex-end;
+  z-index: 10;
+  margin-top: -12px;
+}

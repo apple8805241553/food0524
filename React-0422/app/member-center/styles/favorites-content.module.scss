@@ -1,0 +1,475 @@
+.productFavoritesList {
+  min-width: 320px;
+  max-width: 1348px;
+}
+
+.taskbar {
+  display: flex;
+  width: 100%;
+  height: 40px; // 新增固定高度
+  align-items: center; // 改為 center 以垂直置中
+  gap: 12px;
+  margin-bottom: 12px;
+  font-family:
+    Inter,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  white-space: nowrap;
+  justify-content: start;
+  flex-wrap: wrap;
+
+  @media (max-width: 991px) {
+    max-width: 100%;
+    white-space: initial;
+    height: auto; // RWD 時允許自動調整高度
+    min-height: 40px; // RWD 時保持最小高度
+  }
+}
+
+.favoritesBtn {
+  height: 40px;
+  display: flex;
+  min-width: 200px;
+  align-items: center;
+  font-family:
+    Noto Sans TC,
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: center;
+  justify-content: start;
+  flex: 1;
+  flex-shrink: 1;
+  flex-basis: 32px;
+  max-width: 300px;
+
+  @media (max-width: 991px) {
+    white-space: initial;
+    min-width: 100%;
+    max-width: 100%;
+    width: 100%;
+  }
+  .btnRecipe,
+  .btnIngredient {
+    height: 40px;
+    padding: 0 14px; //padding-left/right
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex: 1;
+    flex-shrink: 1;
+    flex-basis: 0%;
+
+    &.active {
+      background-color: #df6c2d;
+      color: #fff;
+    }
+  }
+}
+
+.btnRecipe {
+  color: #df6c2d;
+  border-radius: 8px 0 0 8px;
+  border: 2px solid #df6c2d;
+  background-color: #faf8f9;
+
+  &.active {
+    color: #fff;
+    background-color: #df6c2d;
+  }
+}
+
+.btnIngredient {
+  color: #fff;
+  border-radius: 0 8px 8px 0;
+  background-color: #df6c2d;
+  border: 2px solid #df6c2d;
+
+  &:not(.active) {
+    color: #df6c2d;
+    background-color: #faf8f9;
+  }
+}
+
+.searchInputWrapper {
+  position: relative; // 定位內部的圖示
+  display: flex;
+  align-items: center;
+  flex-grow: 1; // 搜尋框填滿剩餘空間
+  min-width: 200px;
+}
+
+.searchInput {
+  // 繼承自 taskbar 的 font-family, font-size, font-weight
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+
+  border: 1px solid #df6c2d;
+  border-radius: 8px;
+  padding: 8px 16px; // 上下、左右內邊距
+  padding-left: 36px; // 為左側圖示留出空間 (根據圖示大小調整)
+  width: 100%; // 填滿 wrapper
+  height: 40px; // 與 taskbar 其他元素高度一致
+  box-sizing: border-box; // 確保 padding 和 border 不會增加總寬度
+
+  &:focus {
+    outline: none;
+    border-color: #df6c2d; // focus 時的邊框顏色
+    box-shadow: 0 0 0 2px lighten(#f0bea4, 5%); // focus 時的陰影
+  }
+
+  &::placeholder {
+    color: #999;
+  }
+}
+
+// 定位在 input 內部的搜尋圖示
+.searchIconInsideInput {
+  position: absolute;
+  left: 12px; // 圖示距離左邊的距離
+  top: 50%;
+  transform: translateY(-50%);
+  color: #df6c2d; // 圖示顏色
+  font-size: 16px; // 圖示大小
+  pointer-events: none; // 讓圖示不會阻擋 input 的點擊
+}
+
+.searchPlaceholder {
+  color: #a09b95;
+  align-self: stretch;
+  margin: auto 0;
+  width: 257px;
+}
+
+.sortWrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid #df6c2d;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit; // 或者與 searchInput 一致的 14px (如果您有設定)
+  color: #555; // 文字顏色
+  background-color: #fff;
+  height: 40px;
+  box-sizing: border-box;
+
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    box-shadow 0.2s;
+
+  &:hover {
+    background-color: #faebe3; // hover 時背景色變淺
+    border-color: darken(#df6c2d, 5%); // hover 時邊框加深一點
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: none;
+    border-color: #df6c2d; // focus 時的邊框顏色
+    box-shadow: 0 0 0 2px lighten(#f0bea4, 5%); // focus 時的陰影
+  }
+
+  .sortBy {
+    user-select: none; // 防止文字被選取
+    white-space: nowrap; // 防止文字換行 (如果空間不足時)
+    color: #df6c2d;
+  }
+}
+
+.sortIconItself {
+  font-size: 1em; // 圖示大小
+  color: #df6c2d; // 圖示顏色，與 searchInput 內的圖示顏色一致
+  .sortWrapper:hover &,
+  .sortWrapper:focus &,
+  .sortWrapper:focus-visible & {
+    color: #df6c2d; // hover/focus 時的圖示顏色
+  }
+}
+
+.filter {
+  height: 40px; // 設定固定高度
+  min-height: 40px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  border-radius: 8px;
+  border: 1px solid var(--Color1, #df6c2d);
+  display: flex;
+  padding: 0 12px;
+  gap: 4px;
+  color: #df6c2d;
+  letter-spacing: 0.42px;
+  height: auto;
+  align-self: stretch;
+  background-color: #faf8f9;
+
+  @media (max-width: 991px) {
+    white-space: initial;
+  }
+}
+
+.filterText {
+  color: #df6c2d;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.filterIcon {
+  aspect-ratio: 10/9;
+  object-fit: contain;
+  object-position: center;
+  width: 10px;
+  fill: #df6c2d;
+  align-self: stretch;
+  margin: auto 0;
+  flex-shrink: 0;
+}
+
+.list {
+  width: 100%;
+}
+
+.listHeader {
+  display: flex;
+  list-style: none;
+  padding: 8px 16px;
+  background-color: #df6c2d;
+  border-radius: 8px 8px 0 0; // 修改只讓上方有圓角
+  margin-bottom: 0; // 確保沒有底部間距
+
+  @media (max-width: 768px) {
+    display: none; // 在手機版時隱藏表頭
+  }
+}
+
+.headerItem {
+  flex: 1;
+  text-align: left;
+  color: #fff;
+
+  &:first-child {
+    flex: 1; // 圖片欄位
+  }
+  &:nth-child(2) {
+    flex: 1; // 品名欄位
+  }
+  &:nth-child(3) {
+    flex: 1; // 品牌欄位
+  }
+  &:nth-child(4) {
+    flex: 1; // 價格欄位
+  }
+  &:nth-child(5) {
+    flex: 1; // 收藏時間欄位
+  }
+  &:last-child {
+    flex: 1; // 操作按鈕欄位
+  }
+}
+
+.listContent {
+  list-style: none;
+  padding: 0;
+  margin-top: 0; // 確保沒有頂部間距
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  width: 100%;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.imageWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    width: 100%; // 在手機版時佔滿寬度
+    justify-content: center; // 圖片置中
+  }
+}
+
+.productImage {
+  width: 60px;
+  height: 60px;
+  background-color: #ddd;
+  border-radius: 4px;
+  display: flex; // 用於圖片載入失敗時的文字居中
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  img {
+    display: block; // 確保圖片是塊級元素
+  }
+}
+
+.itemLink {
+  display: flex;
+  align-items: center;
+  flex: 5; // 因為有5個欄位，所以設定為5
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 10px;
+
+  .imageWrapper {
+    flex: 1; // 對應表頭第一欄
+    max-width: 20%; // 確保寬度為總寬的1/5
+  }
+
+  .itemInfo {
+    flex: 1; // 每個欄位佔1/5的寬度
+    max-width: 20%; // 確保寬度為總寬的1/5
+    padding: 0 8px; // 加入一些間距
+    word-break: break-word; // 允許長單字換行
+    overflow-wrap: break-word; // 確保長單字會換行
+    white-space: normal; // 移除 nowrap，允許文字換行
+
+    @media (max-width: 768px) {
+      max-width: 100%; // 在手機版時允許佔滿寬度
+      padding: 8px; // 增加一些間距
+    }
+  }
+}
+
+.actionWrapper {
+  flex: 1; // 操作欄位
+  max-width: 20%; // 確保寬度為總寬的1/5
+  display: flex;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.unfavoriteBtn {
+  width: 100%;
+  height: 30px;
+  background-color: #df6c2d;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family:
+    'Noto Sans TC',
+    -apple-system,
+    Roboto,
+    Helvetica,
+    sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: darken(#df6c2d, 5%);
+  }
+
+  @media (max-width: 768px) {
+    max-width: 200px; // 限制按鈕最大寬度
+    margin: 0 auto; // 按鈕置中
+  }
+}
+
+.loadingMessage,
+.errorMessage,
+.emptyMessage {
+  padding: 20px;
+  text-align: center;
+  color: #777;
+  font-size: 1rem; // 調整字體大小
+  min-height: 100px; // 給一些最小高度，避免內容跳動
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginationSection {
+  // 分頁區塊容器
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination {
+  // 分頁按鈕群組
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pageArrow {
+  // 上一頁/下一頁按鈕
+  padding: 8px;
+  border: 1px solid #df6c2d;
+  background: #fff;
+  cursor: pointer;
+  border-radius: 50%; // 改為圓形
+  color: #df6c2d;
+  width: 36px; // 設定固定寬度
+  height: 36px; // 設定固定高度
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #df6c2d;
+    color: #fff;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    border-color: #ddd;
+    color: #ddd;
+    &:hover {
+      background-color: #fff;
+      color: #ddd;
+    }
+  }
+}
+
+.pageNumber {
+  // 頁碼按鈕
+  width: 36px; // 設定固定寬度
+  height: 36px; // 設定固定高度
+  padding: 0;
+  border: 1px solid #df6c2d;
+  background: #fff;
+  color: #df6c2d;
+  cursor: pointer;
+  border-radius: 50%; // 改為圓形
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background-color: #df6c2d;
+    color: #fff;
+  }
+}
+
+.activePage {
+  // 當前頁碼的樣式
+  background-color: #df6c2d;
+  color: #fff;
+  border-color: #df6c2d;
+
+  &:hover {
+    background-color: darken(#df6c2d, 5%);
+  }
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <pre id="info"></pre>
+
+    <script>
+        fetch(`//${location.hostname}:3001/try-sess`)
+            .then((r) => r.json())
+            .then((result) => {
+                info.innerHTML = JSON.stringify(result, null, 4);
+            });
+    </script>
+</body>
+
+</html>

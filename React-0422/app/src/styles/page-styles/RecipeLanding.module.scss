@@ -1,0 +1,434 @@
+@use '../variables' as *;
+@use '../mixins.scss' as *;
+
+.container {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 版首輪播 Start */
+.carouselOverlay {
+  color: #fff;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  justify-content: center; // 垂直置中
+  align-items: center; // 水平置中
+  flex-direction: column;
+  pointer-events: none; /* 允許點擊穿透到輪播控制按鈕 */
+  .heroContent {
+    z-index: 10;
+    text-shadow: $title-shadow;
+    h1 {
+      margin-bottom: 10px;
+    }
+  }
+
+  .searchBarContainer {
+    pointer-events: auto; /* 確保可以互動 */
+    z-index: 10;
+    // width: 100%;
+    padding: 15px;
+    .searchBarInner {
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.7); /* 半透明白色背景 */
+      border-radius: 100px;
+      border: 2px solid #fff;
+      padding: 10px 25px 10px 35px;
+      gap: 100px;
+      input {
+        flex-grow: 1;
+        border: none;
+        background: none;
+        &:focus {
+          outline: none;
+          // border: 3px solid $color-accent;
+          box-shadow: none; // 如有陰影也一併取消
+        }
+      }
+      input::placeholder {
+        color: #fff;
+        font-size: $font-size-p1;
+      }
+      button {
+        border: none;
+        background: none;
+        .searchIcon {
+          font-size: $font-size-icon;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.carouselExampleFade {
+  height: 400px;
+}
+.carouselInner {
+  height: 100%; /* 讓內部容器撐滿輪播容器 */
+}
+
+/* 版首輪播 END */
+
+.categoriesContainer {
+  padding: 45px 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1280px;
+  button {
+    &:hover {
+      transform: scale(1.2);
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+.arrowIcon {
+  width: 70px;
+  border-radius: 9rem;
+}
+
+.categoriesWrapper {
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  margin: auto 0;
+  align-items: center;
+  gap: 15px;
+  justify-content: start;
+  flex-wrap: wrap;
+  transition: all 0.3s;
+  button {
+    &:hover {
+      transform: scale(1.1);
+    }
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* categoryIcon 漸層Start */
+.categoryIcon {
+  width: 142px;
+  height: 142px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 50%;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  font-size: 24px;
+  font-weight: $font-weight-title;
+  background-color: #df6c2d;
+  svg {
+    font-size: 32px;
+  }
+}
+
+.categoryIcon::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: #423c3a;
+  z-index: -1;
+  transition: all 1s ease; /* 控制漸變的過渡效果 */
+  transform: translate(-50%, -50%);
+}
+
+.categoryIcon:hover::before {
+  width: 200%;
+  height: 200%;
+  background: #423c3a;
+}
+/* categoryIcon 漸層End */
+
+.recipeSection {
+  padding-bottom: 50px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.recipeBlock {
+  max-width: 1280px;
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: $color-background-error;
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  @media (max-width: 991px) {
+    margin: 0 10px;
+  }
+}
+
+.recipeCategory {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  position: relative;
+  padding: 0 35px;
+  color: #fff;
+  font-weight: $font-weight-title;
+  text-align: center;
+  flex: 1;
+  @media (max-width: 991px) {
+    padding: 20px 35px;
+    flex-direction: row;
+    align-items: center;
+    // gap: 10px;
+  }
+
+  img {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+.categoryTitle {
+  font-size: 32px;
+  position: relative;
+  // text-shadow: $title-shadow;
+  color: $color-primary;
+  overflow: hidden;
+}
+
+.viewMoreText {
+  font-size: 32px;
+  @media (max-width: 991px) {
+    margin: 5px 15px;
+    font-size: 32px;
+  }
+}
+.viewMoreButton {
+  justify-content: center;
+  padding: 10px 0;
+  display: flex;
+  margin-top: 10px;
+  border-radius: 9rem;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  @media (max-width: 991px) {
+    padding: 5px 20px;
+    margin-top: 0px;
+  }
+  h2 {
+    @media (max-width: 991px) {
+      font-size: 30px;
+    }
+  }
+}
+.viewMoreButton:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #df6c2d;
+  border-radius: 10rem;
+  z-index: -2;
+}
+.viewMoreButton:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #fffaf0;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.viewMoreButton:hover {
+  color: #423c3a;
+}
+.viewMoreButton:hover:before {
+  width: 100%;
+}
+
+.recipeCardsSection {
+  width: 100%;
+  max-width: 1050px;
+}
+.recipeCardsContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 15px;
+  @media (max-width: 991px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.featuredSection {
+  width: 100%;
+  padding: 50px 0 70px 0;
+  text-align: center;
+  background-color: $color-accent;
+  div {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1280px;
+
+    h2 {
+      color: $color-background;
+      font-size: 32px;
+      padding: 0 0 30px 0;
+    }
+    .featuredContainer {
+      display: flex;
+      gap: 15px;
+      color: $color-primary;
+
+      .featuredCard {
+        border-radius: 30px;
+        background-color: #fff;
+        width: 100%;
+        overflow: hidden;
+        .featuredCardImage {
+          background-color: $color-background-error;
+          height: 200px;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        h2 {
+          padding: 20px 0;
+          color: $color-primary;
+          font-size: $font-size-h3;
+          align-self: stretch;
+        }
+        transition: all 0.3s;
+        &:hover {
+          transform: scale(1.02); // 放大卡片
+        }
+        &:active {
+          transform: scale(0.98);
+        }
+      }
+    }
+  }
+}
+
+// 手機橫向滑動樣式
+@media (max-width: 1150px) {
+  .featuredSection .featuredContainer {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    gap: 12px;
+    padding: 0 20px 30px 20px;
+  }
+  .featuredSection .featuredCard {
+    flex: 0 0 45vw;
+    min-width: 45vw;
+    max-width: 50vw;
+    width: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .heroContent {
+    h1 {
+      font-size: 32px;
+    }
+    h2 {
+      font-size: 16px;
+    }
+  }
+  .carouselExampleFade {
+    height: 100%;
+  }
+  .categoriesSection {
+    white-space: initial;
+  }
+
+  .categoriesContainer {
+    padding: 20px;
+  }
+
+  .categoriesWrapper {
+    max-width: 100%;
+  }
+
+  .categoryIcon {
+    width: 110px;
+    height: 110px;
+    // white-space: initial;
+  }
+
+  .categoryIconSpecial {
+    padding: 100px 20px 20px;
+    white-space: initial;
+  }
+
+  .recipeSection {
+    max-width: 100%;
+  }
+
+  .recipeBlock {
+    max-width: 100%;
+  }
+
+  .categoryTitle {
+    font-size: 40px;
+    padding: 0 20px;
+    white-space: initial;
+  }
+
+  .viewMoreButtonSpecial {
+    padding: 25px 20px;
+    white-space: initial;
+  }
+
+  .recipeCardsContainer {
+    max-width: 100%;
+  }
+
+  .recipeCardContent {
+    padding: 25px 20px;
+  }
+
+  .featuredCardTitle {
+    padding: 0 20px 25px;
+    white-space: initial;
+  }
+  .arrowIcon {
+    width: 50px;
+  }
+}

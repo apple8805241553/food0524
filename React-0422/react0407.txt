@@ -1,0 +1,51 @@
+rccp  快速建置出
+
+
+只有客戶端元件(RCC)才可以使用hook  。整個JSX的最開頭要寫上 'use client'
+'use client'
+
+import
+有寫{ }時是部分導入 或 多重導入
+import { useState } from 'react'
+也就是只要不是export default，就是需要使用{ } 來import
+
+
+{ } 放入變數、表達式
+函數定義無法直接渲染出來
+
+reactNode   react節點
+
+行內style 需要用{ }包起來
+style = {{}}
+
+context和layout 會用到children屬性
+
+
+{/* ?. 功能為前面如果是undefined 就不會報錯(因為不會執行) */}
+
+{a1?.map((value, index) => (
+  <li key={index}>{value}</li>
+  ))}
+
+  state(狀態)的變動，其實是將新的值來替換掉舊的值。 而不是舊的值真的有變動
+  const state = {...v}
+  state += 1 
+  setState(state)
+
+
+  //NEXT裡面的圖片專用元件
+import Image from 'next/image'
+使用時不是寫<img> 而是<Image> ， 並且需要寫寬width和高height
+<Image
+                    width={150}
+                    height={150}
+                    src={`/images/${item.photo}`}
+                    alt=""
+                  />
+
+
+ css module   給組件化使用的CSS方式
+product-table.module.css   。檔案明先.module  再.css
+
+並且裡面不能用全域型CSS ，必須要有class或ID
+.my-table 或#my-table  
