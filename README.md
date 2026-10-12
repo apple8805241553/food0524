@@ -13,5 +13,3 @@
 清除舊憑證：git credential-osxkeychain erase
 生成新的 Token：需要在 GitHub 上創建 Personal Access Token。
 推送時使用 Token：用生成的 PAT 代替密碼進行身份驗證。
-
-73
